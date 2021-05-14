@@ -1,16 +1,30 @@
 const express = require('express');
 const app = express();
+let string = '';
 
-app.get('/makers/:name', (req, res) => {  
+app.get('/', (req, res) => {  
 
-    
-      const capitaliceWord = capitalizar(req.params.name);
-      res.send(`<h1>Hola ${capitaliceWord}!</h1>`);
-  
+  for ( let i = 1; i <= 50; i++){
+      if ( i % 2 === 0){
+         string  += `<p>  ${i} Soy Par!</p> `;
+      }else{
+         string  += `<p>  ${i} Soy Impar!</p> `;
+      }
+     
+ }
+
+ res.send(
+     `<!DOCTYPE html>
+         <head>   
+         </head>
+         <body>
+         ${string}             
+         </body>
+         </html>`);             
+
 });
 
-function capitalizar(str) {    
-        return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();  
-}
-
 app.listen(3000, () => console.log('Listening on port 3000!'));
+
+
+
